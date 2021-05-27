@@ -1,4 +1,4 @@
-const genTemplate = function(str){
+const genTemplate = function(cardStr){
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -19,7 +19,7 @@ const genTemplate = function(str){
     </div>
     <div class="container-body container-fluid">
        <div class="row">
-            ${str} 
+            ${cardStr} 
         </div>
     </div>
     <script src="https://kit.fontawesome.com/257de25400.js" crossorigin="anonymous"></script>  
@@ -33,7 +33,7 @@ const genCard = function (employArray) {
 
     let roleInfo;
 
-    if (employArray.role === "Manager") {roleInfo = `Office #: ${employArray.officeNumber}`} ; 
+    if (employArray.role === "Manager") {roleInfo = `Office #: ${employArray.officeNum}`} ; 
     if (employArray.role === "Engineer") {roleInfo = `Github Username: ${employArray.github}`};
     if (employArray.role === "Intern") {roleInfo = `School: ${employArray.school}`};
 

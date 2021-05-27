@@ -86,9 +86,9 @@ async function prompt() {
                    }, ]);
                    //store the object and push
                    const Engineer = new engineer(response.name, response.id, response.email, response2.github);
-                   teamArr.push(engineer);
+                   teamArr.push(Engineer);
               }  
-              if (response.role === "intern") {
+              if (response.role === "Intern") {
                    response2 = await inquirer.prompt([{
                         type: "input",
 
@@ -98,10 +98,10 @@ async function prompt() {
                    }, ]);
                    //store the object and push
                    const Intern = new intern(response.name, response.id, response.email, response2.school);
-                   teamArr.push(intern);
+                   teamArr.push(Intern);
               } 
               
-              if (response.role === "manager") {
+              if (response.role === "Manager") {
                    response2 = await inquirer.prompt([{
                         type: "input",
                         name: "officeNumber",
@@ -109,7 +109,7 @@ async function prompt() {
                    }, ]);
                    //store the object and push
                    const Manager = new manager(response.name, response.id, response.email, response2.officeNumber);
-                   teamArr.push(manager);
+                   teamArr.push(Manager);
               }
          } catch (err) {
               return console.log(err);
