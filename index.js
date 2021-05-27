@@ -1,3 +1,6 @@
+
+//declaring variables and methods
+// importing in required frameworks
 const inquirer = require('inquirer');
 const fs = require('fs');
 const intern = require('./lib/intern');
@@ -10,15 +13,16 @@ const html = require('../Team_profile_generator/src/template');
 const writeFile = util.promisify(fs.writeFile);
 const appendFile = util.promisify(fs.appendFile);
 
-
+//setting a blank teamarray to store employee data
 let teamArr = [];
+// empty string to be used to store team data as string for html
 let teamStr = '';
 
 
 async function start() {
     try {
          await prompt()
-
+        //iterating the team array 
          for (let i = 0; i < teamArr.length; i++) {
    
               teamStr = teamStr + html.genCard(teamArr[i]);
@@ -43,7 +47,7 @@ async function start() {
 
 async function prompt() {
     let responseDone = "";
-    // prompt to collect input and use do while atleast one and do it number of times depending on the while condition
+    // questionairre using inquierer to store data 
     do {
          try {
               response = await inquirer.prompt([
@@ -75,49 +79,47 @@ async function prompt() {
                    }
               ]);
 
-              let response2 = ""
+              let extenderRes = ""
               // if else statement
 
               if (response.role === "Engineer") {
-                   response2 = await inquirer.prompt([{
+                extenderRes = await inquirer.prompt([{
                         type: "input",
                         name: "github",
                         message: "What is the employee's github username?:",
                    }, ]);
-                   //store the object and push
-                   const Engineer = new engineer(response.name, response.id, response.email, response2.github);
+                   //pushes engineer to the teamArray
+                   const Engineer = new engineer(response.name, response.id, response.email, extenderRes.github);
                    teamArr.push(Engineer);
               }  
               if (response.role === "Intern") {
-                   response2 = await inquirer.prompt([{
+                extenderRes = await inquirer.prompt([{
                         type: "input",
-
-                        //the x is to only store into the team array
                         name: "school",
                         message: "Eneter Intern's school:",
                    }, ]);
-                   //store the object and push
-                   const Intern = new intern(response.name, response.id, response.email, response2.school);
+                   //pushes intern to the teamArray
+                   const Intern = new intern(response.name, response.id, response.email, extenderRes.school);
                    teamArr.push(Intern);
               } 
               
               if (response.role === "Manager") {
-                   response2 = await inquirer.prompt([{
+                extenderRes = await inquirer.prompt([{
                         type: "input",
                         name: "officeNumber",
                         message: "What is the employee's office #:",
                    }, ]);
-                   //store the object and push
-                   const Manager = new manager(response.name, response.id, response.email, response2.officeNumber);
+                   //pushes manager to the teamArray
+                   const Manager = new manager(response.name, response.id, response.email, extenderRes.officeNumber);
                    teamArr.push(Manager);
               }
          } catch (err) {
               return console.log(err);
          }
-         console.log(teamArr)
-         //need to prompt do you want to continue
+         
+         //If user has more  employees to ask will ask if they want to continue
 
-         responseDone = await inquirer.prompt([{
+         complete = await inquirer.prompt([{
               type: "list",
               name: "finish",
               message: "Add Another Employee?",
@@ -127,7 +129,7 @@ async function prompt() {
               ]
          }, ]);
 
-        } while (responseDone.finish === "Yes");
+        } while (complete.finish === "Yes");
     }
 
 
