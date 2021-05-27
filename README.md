@@ -1,7 +1,22 @@
 
 # Team Mangement Page Generator
+
+Technology used:
+<p align="center">
+    <img src="https://img.shields.io/badge/Javascript-yellow" />
+    <img src="https://img.shields.io/badge/-node.js-green" />
+    <img src="https://img.shields.io/badge/-inquirer-red" >
+</p>
+
 # Description
 This app will take input from the users asking a team members name, id , role , email and other fields and adds it as a card to a generated website. 
+
+## Live Demo Video 
+
+
+
+[![Instructional Video](https://img.youtube.com/vi/ZqTGfMSfpcg/0.jpg)](https://www.youtube.com/watch?v=ZqTGfMSfpcg)
+
 # Table of Contents 
 * [Installation](#installation)
 * [Usage](#usage)
